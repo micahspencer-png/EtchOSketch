@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtchOSketch", "EtchOSketch\EtchOSketch.csproj", "{8BC3446F-D985-4E0C-9F6D-735B3AB5CC83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BC3446F-D985-4E0C-9F6D-735B3AB5CC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BC3446F-D985-4E0C-9F6D-735B3AB5CC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BC3446F-D985-4E0C-9F6D-735B3AB5CC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BC3446F-D985-4E0C-9F6D-735B3AB5CC83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44A36E0C-6A5A-4AD1-98EB-354D5E6AA787}
+	EndGlobalSection
+EndGlobal
