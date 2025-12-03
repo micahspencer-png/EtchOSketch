@@ -52,6 +52,7 @@
             helpToolStripMenuItem1 = new ToolStripMenuItem();
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
             DisplayPictureBox = new PictureBox();
+           
             MenuStrip.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).BeginInit();
@@ -226,9 +227,11 @@
             // 
             // DisplayPictureBox
             // 
-            DisplayPictureBox.Location = new Point(12, 31);
+            DisplayPictureBox.BorderStyle = BorderStyle.FixedSingle;
+            DisplayPictureBox.ContextMenuStrip = contextMenuStrip1;
+            DisplayPictureBox.Location = new Point(30, 42);
             DisplayPictureBox.Name = "DisplayPictureBox";
-            DisplayPictureBox.Size = new Size(1019, 578);
+            DisplayPictureBox.Size = new Size(986, 555);
             DisplayPictureBox.TabIndex = 5;
             DisplayPictureBox.TabStop = false;
             // 
@@ -245,7 +248,10 @@
             Controls.Add(MenuStrip);
             MainMenuStrip = MenuStrip;
             Name = "EtchOSketch";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EtchOSketch";
+            MouseDown += GraphicsDesign_MouseMove;
+            MouseMove += GraphicsDesign_MouseMove;
             MenuStrip.ResumeLayout(false);
             MenuStrip.PerformLayout();
             contextMenuStrip1.ResumeLayout(false);

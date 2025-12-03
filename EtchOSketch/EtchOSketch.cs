@@ -7,11 +7,14 @@ namespace EtchOSketch
         public EtchOSketch()
         {
             InitializeComponent();
+            PictureBoxSetup();
         }
+
         int oldX;
         int oldY;
         Color penColor = Color.Black;
         int penWidth = 1;
+
         //Program Logic---------------------------------------------------------------------------------------------------------
 
         private void SelectColor() 
@@ -28,12 +31,45 @@ namespace EtchOSketch
 
         private void Sketch(int x, int y) 
         { 
-        
+            Graphics g = DisplayPictureBox.CreateGraphics();
+            Pen thePen = new Pen(this.penColor, this.penWidth);
+
+            g.DrawLine(thePen, this.oldX, this.oldY, x, y);
+            this.oldX = x;
+            this.oldY = y;
+
+            g.Dispose();
+            thePen.Dispose();
         }
 
         private void ClearDrawing() 
-        { 
-        
+        {
+            for (int i = 0; i < 10; i++) 
+            {
+                int xOffset = 100;
+                int yOffset = 100;
+                int y = this.Top;
+                int x = this.Left;
+
+                y = y + yOffset;
+                x = x + xOffset;
+
+                System.Threading.Thread.Sleep(100);
+
+                xOffset *= -1;
+                yOffset *= -1;
+            }
+            DisplayPictureBox.Invalidate();
+        }
+
+        void PictureBoxSetup() 
+        {
+            Bitmap bmp = new Bitmap(DisplayPictureBox.Width, DisplayPictureBox.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+            }
+            DisplayPictureBox.Image = bmp;
         }
 
 
@@ -41,7 +77,7 @@ namespace EtchOSketch
         //Event Handlers--------------------------------------------------------------------------------------------------------
         private void SelectColorButton_Click(object sender, EventArgs e)
         {
-
+            SelectColor();
         }
 
         private void WaveformButton_Click(object sender, EventArgs e)
@@ -61,8 +97,7 @@ namespace EtchOSketch
 
         private void GraphicsDesign_MouseMove(object sender, MouseEventArgs e)
         {
-            //this.Text = $"({e.X.ToString()},{e.Y.ToString()} Button: {e.Button})";
-
+           
             if (e.Button == MouseButtons.Left)
             {
                 Sketch(e.X, e.Y);
@@ -76,5 +111,6 @@ namespace EtchOSketch
             }
             
         }
+      
     }
 }
