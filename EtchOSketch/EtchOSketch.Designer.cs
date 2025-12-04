@@ -52,7 +52,6 @@
             helpToolStripMenuItem1 = new ToolStripMenuItem();
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
             DisplayPictureBox = new PictureBox();
-           
             MenuStrip.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).BeginInit();
@@ -234,12 +233,16 @@
             DisplayPictureBox.Size = new Size(986, 555);
             DisplayPictureBox.TabIndex = 5;
             DisplayPictureBox.TabStop = false;
+            DisplayPictureBox.MouseDown += Picture_MouseDown;
+            DisplayPictureBox.MouseUp += Picture_MouseUp;
+            DisplayPictureBox.MouseMove += Picture_MouseMovement;
             // 
             // EtchOSketch
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1043, 688);
+            ContextMenuStrip = contextMenuStrip1;
             Controls.Add(DisplayPictureBox);
             Controls.Add(WaveformButton);
             Controls.Add(ExitButton);
@@ -258,6 +261,11 @@
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void Picture_MouseMove(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

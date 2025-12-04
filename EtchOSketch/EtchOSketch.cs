@@ -7,14 +7,15 @@ namespace EtchOSketch
         public EtchOSketch()
         {
             InitializeComponent();
-            PictureBoxSetup();
+            ClearDrawing();
         }
 
-        int oldX;
-        int oldY;
         Color penColor = Color.Black;
         int penWidth = 1;
 
+        bool isDrawing = false;
+        Point PreviousPoint;
+        bool trueClear = false;
         //Program Logic---------------------------------------------------------------------------------------------------------
 
         private void SelectColor() 
@@ -29,48 +30,58 @@ namespace EtchOSketch
         
         }
 
-        private void Sketch(int x, int y) 
-        { 
-            Graphics g = DisplayPictureBox.CreateGraphics();
+        private void Sketch(Point XY) 
+        {
+            Graphics g = Graphics.FromImage(DisplayPictureBox.Image);
             Pen thePen = new Pen(this.penColor, this.penWidth);
+            
+            
+            g.DrawLine(thePen, PreviousPoint, XY);
+            PreviousPoint = XY;
 
-            g.DrawLine(thePen, this.oldX, this.oldY, x, y);
-            this.oldX = x;
-            this.oldY = y;
-
+            DisplayPictureBox.Invalidate();
             g.Dispose();
             thePen.Dispose();
         }
 
         private void ClearDrawing() 
         {
-            for (int i = 0; i < 10; i++) 
+            if (trueClear == true)
             {
-                int xOffset = 100;
-                int yOffset = 100;
-                int y = this.Top;
-                int x = this.Left;
+                for (int i = 0; i < 10; i++)
+                {
+                    int xOffset = 10;
+                    int yOffset = 10;
+                    if (i == 1 || i == 3 || i == 5 || i == 7 || i == 9)
+                    {
+                        xOffset *= -1;
+                        yOffset *= -1;
+                    }
+                    int y = this.Top;
+                    int x = this.Left;
+                    int NewY = 0;
+                    int NewX = 0;
 
-                y = y + yOffset;
-                x = x + xOffset;
+                    NewY = y + yOffset;
+                    NewX = x + xOffset;
 
-                System.Threading.Thread.Sleep(100);
+                    this.Top = NewY;
+                    this.Left = NewX;
 
-                xOffset *= -1;
-                yOffset *= -1;
+                    System.Threading.Thread.Sleep(100);
+                }
             }
-            DisplayPictureBox.Invalidate();
-        }
-
-        void PictureBoxSetup() 
-        {
             Bitmap bmp = new Bitmap(DisplayPictureBox.Width, DisplayPictureBox.Height);
             using (Graphics g = Graphics.FromImage(bmp))
             {
                 g.Clear(Color.White);
+                g.Dispose();
             }
             DisplayPictureBox.Image = bmp;
+            
         }
+
+        
 
 
 
@@ -87,6 +98,7 @@ namespace EtchOSketch
 
         private void Clear_Click(object sender, EventArgs e)
         {
+            trueClear = true;
             ClearDrawing();
         }
 
@@ -98,18 +110,39 @@ namespace EtchOSketch
         private void GraphicsDesign_MouseMove(object sender, MouseEventArgs e)
         {
            
-            if (e.Button == MouseButtons.Left)
-            {
-                Sketch(e.X, e.Y);
-            }
-            this.oldX = e.X;
-            this.oldY = e.Y;
-
+            
             if (e.Button == MouseButtons.Middle)
             {
                 SelectColor();
             }
             
+        }
+        private void Picture_MouseDown(object sender, MouseEventArgs e) 
+        { 
+            isDrawing = true;
+            PreviousPoint = e.Location;
+        }
+
+        private void Picture_MouseMovement(object sender, MouseEventArgs e) 
+        {
+            if (isDrawing == true)
+            {
+                Point XY = e.Location;
+                
+                if (e.Button == MouseButtons.Left)
+                {
+                    Sketch(XY);
+                }
+            }
+            if (e.Button == MouseButtons.Middle) 
+            {
+                SelectColor();
+            }
+        }
+
+        private void Picture_MouseUp(object sender, MouseEventArgs e) 
+        { 
+            isDrawing = false;
         }
       
     }
