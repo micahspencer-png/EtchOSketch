@@ -27,9 +27,9 @@ namespace EtchOSketch
 
         private void DrawWaveform() 
         {
-            double s = Math.Sin(0);
-            double c = Math.Cos(0);
-            double t = Math.Tan(0);
+            int s = 0;
+            int c = 1;
+            int t = 2;
 
             Bitmap bmp = new Bitmap(DisplayPictureBox.Width, DisplayPictureBox.Height);
             using (Graphics g = Graphics.FromImage(bmp))
@@ -60,17 +60,33 @@ namespace EtchOSketch
             thePen.Dispose();
         }
 
-        private void WaveShape(double WaveType, Pen draw) 
+        private void WaveShape(int waveShape, Pen draw) 
         {
             int Amplitude = 275;
-            double Frequency = 0.008;
+            double Frequency = 0.00636;
             int OffsetY = 280;
+
             Graphics Wave = Graphics.FromImage(DisplayPictureBox.Image);
 
             PointF[] points = new PointF[DisplayPictureBox.Width];
             for (int x = 0; x < DisplayPictureBox.Width; x++)
             {
-                double y = Amplitude * Math.Sin(Frequency * x);
+                double y = 0;
+                if (waveShape == 0)
+                {
+                    y = Amplitude * Math.Sin(Frequency * x);
+                }
+
+                if (waveShape == 1) 
+                {
+                    y = Amplitude * Math.Cos(Frequency * x);
+                }
+
+                if (waveShape == 2)
+                {
+                    y = Amplitude * Math.Tan(Frequency * x);
+                }
+
                 points[x] = new PointF(x, (float)(OffsetY - y));
             }
 
