@@ -228,14 +228,14 @@
             // 
             DisplayPictureBox.BorderStyle = BorderStyle.FixedSingle;
             DisplayPictureBox.ContextMenuStrip = contextMenuStrip1;
-            DisplayPictureBox.Location = new Point(30, 42);
+            DisplayPictureBox.Location = new Point(27, 40);
             DisplayPictureBox.Name = "DisplayPictureBox";
-            DisplayPictureBox.Size = new Size(986, 555);
+            DisplayPictureBox.Size = new Size(990, 560);
             DisplayPictureBox.TabIndex = 5;
             DisplayPictureBox.TabStop = false;
             DisplayPictureBox.MouseDown += Picture_MouseDown;
-            DisplayPictureBox.MouseUp += Picture_MouseUp;
             DisplayPictureBox.MouseMove += Picture_MouseMovement;
+            DisplayPictureBox.MouseUp += Picture_MouseUp;
             // 
             // EtchOSketch
             // 

@@ -26,8 +26,31 @@ namespace EtchOSketch
         }
 
         private void DrawWaveform() 
-        { 
-        
+        {
+            Bitmap bmp = new Bitmap(DisplayPictureBox.Width, DisplayPictureBox.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+                g.Dispose();
+            }
+            DisplayPictureBox.Image = bmp;
+            
+            Graphics grid = Graphics.FromImage(DisplayPictureBox.Image);
+            Pen thePen = new Pen(this.penColor, this.penWidth);
+            Pen Pen1 = new Pen(Color.Red, this.penWidth);
+            Pen Pen2 = new Pen(Color.Green, this.penWidth);
+            Pen Pen3 = new Pen(Color.Blue, this.penWidth);
+            
+            for (int i = 1; i < 10 ; i++) 
+            {
+                grid.DrawLine(thePen, i * 99, 0, i * 99, 550);
+                grid.DrawLine(thePen, 0, i * 56, 990, i * 56);
+                DisplayPictureBox.Invalidate();
+            }
+
+            
+            grid.Dispose();
+            thePen.Dispose();
         }
 
         private void Sketch(Point XY) 
@@ -68,7 +91,7 @@ namespace EtchOSketch
                     this.Top = NewY;
                     this.Left = NewX;
 
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(70);
                 }
             }
             Bitmap bmp = new Bitmap(DisplayPictureBox.Width, DisplayPictureBox.Height);
