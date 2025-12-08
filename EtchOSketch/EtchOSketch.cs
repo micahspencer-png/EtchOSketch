@@ -2,6 +2,11 @@ using System.Windows.Forms;
 
 namespace EtchOSketch
 {
+    //Micah Spencer
+    //RCET 2265
+    //Fall 2025
+    //Etch-O-Sketch Program
+    //https://github.com/micahspencer-png/EtchOSketch.git
     public partial class EtchOSketch : Form
     {
         public EtchOSketch()
@@ -65,6 +70,9 @@ namespace EtchOSketch
             int Amplitude = 275;
             double Frequency = 0.00636;
             int OffsetY = 280;
+            string Text = "";
+            int height = 0;
+            Color color = Color.White;
 
             Graphics Wave = Graphics.FromImage(DisplayPictureBox.Image);
 
@@ -75,22 +83,44 @@ namespace EtchOSketch
                 if (waveShape == 0)
                 {
                     y = Amplitude * Math.Sin(Frequency * x);
+                    Text = "Sine Wave";
+                    height = 420;
+                    color = Color.Red;
                 }
 
                 if (waveShape == 1) 
                 {
                     y = Amplitude * Math.Cos(Frequency * x);
+                    Text = "Cosine Wave";
+                    height = 440;
+                    color = Color.Green;
                 }
 
                 if (waveShape == 2)
                 {
                     y = Amplitude * Math.Tan(Frequency * x);
+                    Text = "Tangent Wave";
+                    height = 470;
+                    color = Color.Blue;
                 }
 
                 points[x] = new PointF(x, (float)(OffsetY - y));
             }
 
             Wave.DrawLines(draw, points);
+
+            Graphics g = Graphics.FromImage(DisplayPictureBox.Image);
+            Pen thePen = new Pen(Color.Cyan, 3);
+
+            
+            Font drawFont = new Font("Times New Roman", 18);
+            SolidBrush drawBrush = new SolidBrush(color);
+
+            g.DrawString(Text, drawFont, drawBrush, 0, height);
+
+            g.Dispose();
+            drawBrush.Dispose();
+
             draw.Dispose();
             Wave.Dispose();
         }

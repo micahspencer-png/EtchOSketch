@@ -52,6 +52,7 @@
             helpToolStripMenuItem1 = new ToolStripMenuItem();
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
             DisplayPictureBox = new PictureBox();
+            toolTip1 = new ToolTip(components);
             MenuStrip.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).BeginInit();
@@ -112,12 +113,12 @@
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(46, 24);
-            fileToolStripMenuItem.Text = "File";
+            fileToolStripMenuItem.Text = "&File";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(116, 26);
+            exitToolStripMenuItem.Size = new Size(224, 26);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += ExitButton_Click;
             // 
@@ -126,7 +127,7 @@
             editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { selectColorToolStripMenuItem, drawWaveformsToolStripMenuItem, clearToolStripMenuItem });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(49, 24);
-            editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Text = "&Edit";
             // 
             // selectColorToolStripMenuItem
             // 
@@ -154,7 +155,7 @@
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             helpToolStripMenuItem.Size = new Size(55, 24);
-            helpToolStripMenuItem.Text = "Help";
+            helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem
             // 
@@ -293,5 +294,6 @@
         private ToolStripMenuItem helpToolStripMenuItem1;
         private ToolStripMenuItem aboutToolStripMenuItem1;
         private PictureBox DisplayPictureBox;
+        private ToolTip toolTip1;
     }
 }
