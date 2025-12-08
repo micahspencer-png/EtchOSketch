@@ -65,6 +65,7 @@
             Clear.Size = new Size(146, 61);
             Clear.TabIndex = 2;
             Clear.Text = "&Clear";
+            toolTip1.SetToolTip(Clear, "Clears the Drawing");
             Clear.UseVisualStyleBackColor = true;
             Clear.Click += Clear_Click;
             // 
@@ -75,6 +76,7 @@
             ExitButton.Size = new Size(146, 61);
             ExitButton.TabIndex = 3;
             ExitButton.Text = "E&xit";
+            toolTip1.SetToolTip(ExitButton, "Closes the Program");
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
@@ -85,6 +87,7 @@
             SelectColorButton.Size = new Size(146, 61);
             SelectColorButton.TabIndex = 0;
             SelectColorButton.Text = "&Select Color";
+            toolTip1.SetToolTip(SelectColorButton, "Selects the Color of the Pen");
             SelectColorButton.UseVisualStyleBackColor = true;
             SelectColorButton.Click += SelectColorButton_Click;
             // 
@@ -95,6 +98,7 @@
             WaveformButton.Size = new Size(146, 61);
             WaveformButton.TabIndex = 1;
             WaveformButton.Text = "Draw &Waveforms";
+            toolTip1.SetToolTip(WaveformButton, "Draws a Sine, Cosine, and Tangent wave");
             WaveformButton.UseVisualStyleBackColor = true;
             WaveformButton.Click += WaveformButton_Click;
             // 
@@ -120,6 +124,7 @@
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(224, 26);
             exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.ToolTipText = "Closes the Program";
             exitToolStripMenuItem.Click += ExitButton_Click;
             // 
             // editToolStripMenuItem
@@ -132,22 +137,25 @@
             // selectColorToolStripMenuItem
             // 
             selectColorToolStripMenuItem.Name = "selectColorToolStripMenuItem";
-            selectColorToolStripMenuItem.Size = new Size(205, 26);
+            selectColorToolStripMenuItem.Size = new Size(224, 26);
             selectColorToolStripMenuItem.Text = "Select Color";
+            selectColorToolStripMenuItem.ToolTipText = "Selects the color of the Pen";
             selectColorToolStripMenuItem.Click += SelectColorButton_Click;
             // 
             // drawWaveformsToolStripMenuItem
             // 
             drawWaveformsToolStripMenuItem.Name = "drawWaveformsToolStripMenuItem";
-            drawWaveformsToolStripMenuItem.Size = new Size(205, 26);
+            drawWaveformsToolStripMenuItem.Size = new Size(224, 26);
             drawWaveformsToolStripMenuItem.Text = "Draw Waveforms";
+            drawWaveformsToolStripMenuItem.ToolTipText = "Draws a Sine, Cosine, and Tangent Wave";
             drawWaveformsToolStripMenuItem.Click += WaveformButton_Click;
             // 
             // clearToolStripMenuItem
             // 
             clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            clearToolStripMenuItem.Size = new Size(205, 26);
+            clearToolStripMenuItem.Size = new Size(224, 26);
             clearToolStripMenuItem.Text = "Clear";
+            clearToolStripMenuItem.ToolTipText = "Clears all drawings";
             clearToolStripMenuItem.Click += Clear_Click;
             // 
             // helpToolStripMenuItem
@@ -160,8 +168,10 @@
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(133, 26);
+            aboutToolStripMenuItem.Size = new Size(224, 26);
             aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.ToolTipText = "Shows Programmer Info";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // contextMenuStrip1
             // 
@@ -224,6 +234,7 @@
             aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             aboutToolStripMenuItem1.Size = new Size(133, 26);
             aboutToolStripMenuItem1.Text = "About";
+            aboutToolStripMenuItem1.Click += aboutToolStripMenuItem_Click;
             // 
             // DisplayPictureBox
             // 
@@ -234,6 +245,7 @@
             DisplayPictureBox.Size = new Size(990, 560);
             DisplayPictureBox.TabIndex = 5;
             DisplayPictureBox.TabStop = false;
+            toolTip1.SetToolTip(DisplayPictureBox, "Click and Hold to Draw in the Picture Box");
             DisplayPictureBox.MouseDown += Picture_MouseDown;
             DisplayPictureBox.MouseMove += Picture_MouseMovement;
             DisplayPictureBox.MouseUp += Picture_MouseUp;

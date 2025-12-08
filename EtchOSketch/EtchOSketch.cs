@@ -23,14 +23,14 @@ namespace EtchOSketch
         bool trueClear = false;
         //Program Logic---------------------------------------------------------------------------------------------------------
 
-        private void SelectColor() 
+        private void SelectColor()
         {
             ColorDialog colorDialog1 = new ColorDialog();
             colorDialog1.ShowDialog();
             this.penColor = colorDialog1.Color;
         }
 
-        private void DrawWaveform() 
+        private void DrawWaveform()
         {
             int s = 0;
             int c = 1;
@@ -43,29 +43,29 @@ namespace EtchOSketch
                 g.Dispose();
             }
             DisplayPictureBox.Image = bmp;
-            
+
             Graphics grid = Graphics.FromImage(DisplayPictureBox.Image);
             Pen thePen = new Pen(this.penColor, this.penWidth);
             Pen Pen1 = new Pen(Color.Red, this.penWidth);
             Pen Pen2 = new Pen(Color.Green, this.penWidth);
             Pen Pen3 = new Pen(Color.Blue, this.penWidth);
-            
-            for (int i = 1; i < 10 ; i++) 
+
+            for (int i = 1; i < 10; i++)
             {
                 grid.DrawLine(thePen, i * 99, 0, i * 99, 550);
                 grid.DrawLine(thePen, 0, i * 56, 990, i * 56);
                 DisplayPictureBox.Invalidate();
             }
 
-            WaveShape(s , Pen1);
+            WaveShape(s, Pen1);
             WaveShape(c, Pen2);
             WaveShape(t, Pen3);
-            
+
             grid.Dispose();
             thePen.Dispose();
         }
 
-        private void WaveShape(int waveShape, Pen draw) 
+        private void WaveShape(int waveShape, Pen draw)
         {
             int Amplitude = 275;
             double Frequency = 0.00636;
@@ -88,11 +88,11 @@ namespace EtchOSketch
                     color = Color.Red;
                 }
 
-                if (waveShape == 1) 
+                if (waveShape == 1)
                 {
                     y = Amplitude * Math.Cos(Frequency * x);
                     Text = "Cosine Wave";
-                    height = 440;
+                    height = 445;
                     color = Color.Green;
                 }
 
@@ -112,7 +112,7 @@ namespace EtchOSketch
             Graphics g = Graphics.FromImage(DisplayPictureBox.Image);
             Pen thePen = new Pen(Color.Cyan, 3);
 
-            
+
             Font drawFont = new Font("Times New Roman", 18);
             SolidBrush drawBrush = new SolidBrush(color);
 
@@ -124,12 +124,12 @@ namespace EtchOSketch
             draw.Dispose();
             Wave.Dispose();
         }
-        private void Sketch(Point XY) 
+        private void Sketch(Point XY)
         {
             Graphics g = Graphics.FromImage(DisplayPictureBox.Image);
             Pen thePen = new Pen(this.penColor, this.penWidth);
-            
-            
+
+
             g.DrawLine(thePen, PreviousPoint, XY);
             PreviousPoint = XY;
 
@@ -138,7 +138,7 @@ namespace EtchOSketch
             thePen.Dispose();
         }
 
-        private void ClearDrawing() 
+        private void ClearDrawing()
         {
             if (trueClear == true)
             {
@@ -172,10 +172,10 @@ namespace EtchOSketch
                 g.Dispose();
             }
             DisplayPictureBox.Image = bmp;
-            
+
         }
 
-        
+
 
 
 
@@ -203,41 +203,46 @@ namespace EtchOSketch
 
         private void GraphicsDesign_MouseMove(object sender, MouseEventArgs e)
         {
-           
-            
+
+
             if (e.Button == MouseButtons.Middle)
             {
                 SelectColor();
             }
-            
+
         }
-        private void Picture_MouseDown(object sender, MouseEventArgs e) 
-        { 
+        private void Picture_MouseDown(object sender, MouseEventArgs e)
+        {
             isDrawing = true;
             PreviousPoint = e.Location;
         }
 
-        private void Picture_MouseMovement(object sender, MouseEventArgs e) 
+        private void Picture_MouseMovement(object sender, MouseEventArgs e)
         {
             if (isDrawing == true)
             {
                 Point XY = e.Location;
-                
+
                 if (e.Button == MouseButtons.Left)
                 {
                     Sketch(XY);
                 }
             }
-            if (e.Button == MouseButtons.Middle) 
+            if (e.Button == MouseButtons.Middle)
             {
                 SelectColor();
             }
         }
 
-        private void Picture_MouseUp(object sender, MouseEventArgs e) 
-        { 
+        private void Picture_MouseUp(object sender, MouseEventArgs e)
+        {
             isDrawing = false;
         }
-      
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Micah Spencer\n    RCET 2265\n    Fall 2025\n    Etch-O-Sketch Program\n    https://github.com/micahspencer-png/EtchOSketch.git");
+        }
     }
 }
